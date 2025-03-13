@@ -1,6 +1,6 @@
 # Assignment
 
-## Preliminary:
+## Preliminaries:
 
 The configurations of running the dataset are contained in initSetting.m, and the major differences between running the Opensky and Urban datasets in initSetting.m are on the file path and the values of IF frequency and sampling frequency. For Opensky dataset, the settings on the file path and the values of IF frequency and sampling frequency are:
 
@@ -77,4 +77,36 @@ The acquisition results is shown in the plot "3D Acquisition Results".
 
 ## Task 2: Adapt the tracking loop (DLL) to generate correlation plots and analyze the tracking performance. Discuss the impact of urban interference on the correlation peaks.
 
-The correlation performance for each satellite can be obtained by running `plotTracking(1:settings.numberOfChannels, trackResults, settings);` in the command window. The correlation plot can be obtained by running Plots.m.
+The datasets are run according to the configuration specified in the Preliminaries section. The correlation performance for each satellite can be obtained by running `plotTracking(1:settings.numberOfChannels, trackResults, settings);` in the command window. The correlation plot can be obtained by running Plots.m.
+
+The tracking loop is implemented in the file tracking.m with multiple correlators of spacing 0.1 chip per each correlator from -0.5 chip to 0.5 chip. Please refer to the file tracking.m for the codes on implementing DDL tracking loop and the multiple correlators.
+
+### Task 2 Result and Tracking Performance on Opensky Dataset
+
+The tracking result for the satellite PRN31 (Channel 3) is taken as an example which is shown in the below figure:
+
+![Task2_Ch3PRN31](https://github.com/user-attachments/assets/21ed86e9-316a-4a92-b7de-9fb0de236406)
+
+The correlation plot is shown in the below figure:
+
+![CorrelationPlot(new)](https://github.com/user-attachments/assets/a9d0c89b-1e27-4eda-851d-7d8f01e6515c)
+
+A sharp peak can be observed in the correlation plot while the early and late correlation output can be kept in a high extent. In other words, the signal is tracked well.
+
+### Task 2 Result and Tracking Performance on Opensky Dataset
+
+The tracking result for the satellite PRN1 (Channel 1) is taken as an example which is shown in the below figure:
+
+![Task2_Ch1PRN1](https://github.com/user-attachments/assets/6fff2111-53c4-4415-9d58-df236ab1525d)
+
+The correlation plot is shown in the below figure:
+
+![Correlation](https://github.com/user-attachments/assets/639e9e32-6c23-4c0c-b770-0e27ba46cb0f)
+
+The correlator output should keep decreasing with the increasing value of code delay from the value of code delay = 0. However, from code delay of 0.2 to code delay of 0.3, the decrease in the correlator output is almost zero. It implies that the peak of the correlator output is distorted in this dataset. The tracking performance is relatively worse.
+
+### Discussion the impact of urban interference on the correlation peaks
+
+From the plots of the correlator output of the Opensky and Urban datasets and the above discussions, one can observe that the correlator output has a sharp peak in the Opensky dataset while the Urban dataset has a distorted correlation peak. The reason of the distorted correlation peak in Urban dataset may be due to the multi-path in which some signals are reflected from the buildings, and the reflected signals travel for a longer distance than the line-of-sight signals before these signals are received by the user's antenna. Hence, these reflected signals arrive at the users after the line-of-sight signals have arrived at the user's antenna, which would probably result in the observation that the late correlation output in Urban dataset is larger than the Opensky dataset.
+
+## Task 3: Decode the navigation message and extract key parameters, such as ephemeris data, for at least one satellite.
