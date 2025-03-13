@@ -131,24 +131,29 @@ The user position can be determined by running init.m while running Plots.m can 
 
 ### Task 4 Result on Opensky Dataset: User Position and Velocity and Comparison of the User Position with the Ground Truth
 
-The calculated user's antenna position is determined to be (22°19' 42.3835",114°10'16.9629"), which is equivalent to (22.3284, 114.1714) in decimal format. Note that the calculated user's antenna position is the same as the ground truth coordinate of (22.3284, 114.1714) (correct to 4 decimal places). The calculated user's position is summarized in the following figure:
+The calculated user's antenna position is determined to be (22°19' 42.3835",114°10'16.9629"), which is equivalent to (22.3284, 114.1714) in decimal format. Note that the calculated user's antenna position is the same as the ground truth coordinate of (22.3284, 114.1714) (correct to 4 decimal places). The calculated user's antenna position is summarized in the following figure:
 
 ![image](https://github.com/user-attachments/assets/fc6a9a78-190a-4079-abb9-a497f61cbd2d)
 
-The user's velocity is summarized in the following figure:
+The user's antenna velocity is summarized in the following figure:
 
 ![Velocity](https://github.com/user-attachments/assets/c49b5566-bce7-4ae1-9070-276ce8858638)
 
 ### Task 4 Result on Urban Dataset: User Position and Velocity and Comparison of the User Position with the Ground Truth
 
-The calculated user's antenna position is determined to be (22°19' 10.4142",114°12'27.3914"), which is equivalent to (22.3196, 114.2076) in decimal format (correct to 4 decimal places), which deviates from the ground truth coordinate of (22.3199, 114.2091) (correct to 4 decimal places) by 157.9 meters.The calculated user's position is summarized in the following figure:
+The calculated user's antenna position is determined to be (22°19' 10.4142",114°12'27.3914"), which is equivalent to (22.3196, 114.2076) in decimal format (correct to 4 decimal places), which deviates from the ground truth coordinate of (22.3199, 114.2091) (correct to 4 decimal places) by 157.9 meters.The calculated user's antenna position is summarized in the following figure:
 
 ![image](https://github.com/user-attachments/assets/8de4c8bf-4371-44d4-a93b-69d9092e6b45)
 
-The user's velocity is summarized in the following figure:
+The user's antenna velocity is summarized in the following figure:
 
 ![Velocity](https://github.com/user-attachments/assets/3c2f84d0-6ed1-42dd-ab0a-68e872ba83b2)
 
 ### Discussion on the impact of multipath effects on the WLS solution
 
-The 
+From the above discussion, the calculated user's antenna position is the same as the ground truth coordinate in the Opensky dataset, while a significant deviation between the calculated user's antenna position and the ground truth coordinate can be observed in the Urban dataset. In other words, the multi-path signals (due to the reflection of GPS signals from tall buildings) make the GPS signal travel longer than the line-of-sight signals. Hence, it degrades the accuracy in determining the position of the user's antenna. Furthermore, due to the multipath signals, the user may guess that the user's antenna position change frequently when multipath signals arrive at the antenna just after the line-of-sight signals arrive at the antenna, making the velocity of the user's antenna velocity is unrelistically high (reaching the speed in the order of 1000 m/s, much faster than the speed of sound) in Urban dataset. Meanwhile, the value of the velocity in the Opensky dataset tends to be realistic.
+
+Furthermore, the degraded accuracy due to multipath effects can be explained by the fact that E=L is always being tried to be achieved in the traditional scalar tracking loops. Hence, multi-path usually leads to a bias in prompt tracking point, resulting in the range measurement errors. Therefore, the significant deviation between the estimated user’s position (in WLS solution) and the actual position from the ground truth coordinate.
+
+## Task 5: Develop an Extended Kalman Filter (EKF) using pseudorange and Doppler measurements to estimate user position and velocity.
+
