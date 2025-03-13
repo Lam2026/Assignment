@@ -19,8 +19,8 @@ Meanwhile, for Urban dataset, the settings on the file path and the values of IF
 ...
 settings.fileName           = 'C:\Users\owner\Documents\MATLAB\GPS\Urban.dat';
 ...
-settings.IF                 = 1580e6-1575.42e6;     % [Hz]
-settings.samplingFreq       = 58e6;       % [Hz]
+settings.IF                 = 0;     % [Hz]
+settings.samplingFreq       = 26e6;       % [Hz]
 ...
 ```
 However, due to the large file size, the files Opensky.bin and Urban.dat will not be uploaded to this repository.
