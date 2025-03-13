@@ -40,8 +40,22 @@ The acquisition results is shown in the plot "3D Acquisition Results".
 
 ![Acquisition plot](https://github.com/user-attachments/assets/232772c1-d7fd-4385-b7cd-bb3de45e6f6d)
 
-| Column 1 Header | Column 2 Header | Column 3 Header |
+| Satellite PRN | Doppler Frequency (Hz) | Code Phase |
 |-----------------|-----------------|-----------------|
-| Row 1, Cell 1   | Row 1, Cell 2   | Row 1, Cell 3   |
-| Row 2, Cell 1   | Row 2, Cell 2   | Row 2, Cell 3   |
-| Row 3, Cell 1   | Row 3, Cell 2   | Row 3, Cell 3   |
+| 16	| -240.402	| 31994 |
+| 26	| 1916.809	| 57754 |
+| 31	| 1066.370	| 18744 |
+| 22	| 1571.102	| 55101 |
+| 27	| -3220.396	| 8814 |
+
+### Task 1 Results for Urbany Dataset
+
+The satellites visible to the user’s antenna is summarized in the plot "Acquisition results".
+
+
+
+
+
+
+
+
