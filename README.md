@@ -23,6 +23,7 @@ settings.IF                 = 1580e6-1575.42e6;     % [Hz]
 settings.samplingFreq       = 58e6;       % [Hz]
 ...
 ```
+However, due to the large file size, the files Opensky.bin and Urban.dat will not be uploaded to this repository.
 
 ## Task 1: Process the IF data using a GNSS SDR and generate the initial acquisition results.
 
@@ -131,7 +132,7 @@ The user position can be determined by running init.m while running Plots.m can 
 
 ### Task 4 Result on Opensky Dataset: User Position and Velocity and Comparison of the User Position with the Ground Truth
 
-The calculated user's antenna position is determined to be (22°19' 42.3835",114°10'16.9629"), which is equivalent to (22.3284, 114.1714) in decimal format. Note that the calculated user's antenna position is the same as the ground truth coordinate of (22.3284, 114.1714) (correct to 4 decimal places). The calculated user's antenna position is summarized in the following figure:
+The calculated user's antenna position is determined to be (22°19'42.3835",114°10'16.9629"), which is equivalent to (22.3284, 114.1714) in decimal format. Note that the calculated user's antenna position is the same as the ground truth coordinate of (22.3284, 114.1714) (correct to 4 decimal places). The calculated user's antenna position is summarized in the following figure:
 
 ![image](https://github.com/user-attachments/assets/fc6a9a78-190a-4079-abb9-a497f61cbd2d)
 
@@ -141,7 +142,7 @@ The user's antenna velocity is summarized in the following figure:
 
 ### Task 4 Result on Urban Dataset: User Position and Velocity and Comparison of the User Position with the Ground Truth
 
-The calculated user's antenna position is determined to be (22°19' 10.4142",114°12'27.3914"), which is equivalent to (22.3196, 114.2076) in decimal format (correct to 4 decimal places), which deviates from the ground truth coordinate of (22.3199, 114.2091) (correct to 4 decimal places) by 157.9 meters.The calculated user's antenna position is summarized in the following figure:
+The calculated user's antenna position is determined to be (22°19'10.4142",114°12'27.3914"), which is equivalent to (22.3196, 114.2076) in decimal format (correct to 4 decimal places), which deviates from the ground truth coordinate of (22.3199, 114.2091) (correct to 4 decimal places) by 157.9 meters.The calculated user's antenna position is summarized in the following figure:
 
 ![image](https://github.com/user-attachments/assets/8de4c8bf-4371-44d4-a93b-69d9092e6b45)
 
@@ -156,4 +157,20 @@ From the above discussion, the calculated user's antenna position is the same as
 Furthermore, the degraded accuracy due to multipath effects can be explained by the fact that E=L is always being tried to be achieved in the traditional scalar tracking loops. Hence, multi-path usually leads to a bias in prompt tracking point, resulting in the range measurement errors. Therefore, the significant deviation between the estimated user’s position (in WLS solution) and the actual position from the ground truth coordinate.
 
 ## Task 5: Develop an Extended Kalman Filter (EKF) using pseudorange and Doppler measurements to estimate user position and velocity.
+
+When the file init.m is run, the EKF algorithm stored in the file ekf.m is called to estimate the user's position and velocity. The plot on user's position will be generated accordingly. To generate the user's antenna velocity with the incorporation of EKF algorithm, Plots.m is executed accordingly.
+
+### Task 5 Result on Opensky Dataset
+
+The calculated user's antenna position is determined to be (22°19'42.4086",114°10'16.9747"), which is equivalent to (22.3284, 114.1714) in decimal format (correct to 4 decimal places), which is the same as the ground truth coordinate of (22.3284, 114.1714) (correct to 4 decimal places). This result is similar to the result in Task 4 because the calculated user's antenna position in Task 4 is highly accurate, so the room for improvement by the adoption of EKF algorithm is probably very small. Hence, the difference of calculated user's antenna positions between Task 4 and Task 5 is very small. The calculated user's antenna position is summarized in the following figure:
+
+![image](https://github.com/user-attachments/assets/c795533e-0496-438c-ab03-df8d10a091ad)
+
+The user's antenna velocity is summarized in the following figure:
+
+![EKF velocity](https://github.com/user-attachments/assets/8a11b5d1-1a6a-4866-b86a-ca754dbb1e77)
+
+### Task 5 Result on Urban Dataset
+
+
 
