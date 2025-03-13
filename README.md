@@ -127,5 +127,28 @@ The ephemeris data of the satellites are summarized in the below table (Fields 1
 
 ## Task 4: Using pseudorange measurements from tracking, implement the Weighted Least Squares (WLS) algorithm to compute the user's position and velocity. Plot the user position and velocity. Compare the results with the ground truth. Discuss the impact of multipath effects on the WLS solution.
 
+The user position can be determined by running init.m while running Plots.m can provide the user velocity. The pseudorange measurements are processed in the functions in the file postNavigation.m while the WLS algorithm is stored in leastSquarePos.m, which will be called by postNavigation.m upon execution.
 
+### Task 4 Result on Opensky Dataset: User Position and Velocity and Comparison of the User Position with the Ground Truth
 
+The calculated user's antenna position is determined to be (22°19' 42.3835",114°10'16.9629"), which is equivalent to (22.3284, 114.1714) in decimal format. Note that the calculated user's antenna position is the same as the ground truth coordinate of (22.3284, 114.1714) (correct to 4 decimal places). The calculated user's position is summarized in the following figure:
+
+![image](https://github.com/user-attachments/assets/fc6a9a78-190a-4079-abb9-a497f61cbd2d)
+
+The user's velocity is summarized in the following figure:
+
+![Velocity](https://github.com/user-attachments/assets/c49b5566-bce7-4ae1-9070-276ce8858638)
+
+### Task 4 Result on Urban Dataset: User Position and Velocity and Comparison of the User Position with the Ground Truth
+
+The calculated user's antenna position is determined to be (22°19' 10.4142",114°12'27.3914"), which is equivalent to (22.3196, 114.2076) in decimal format (correct to 4 decimal places), which deviates from the ground truth coordinate of (22.3199, 114.2091) (correct to 4 decimal places) by 157.9 meters.The calculated user's position is summarized in the following figure:
+
+![image](https://github.com/user-attachments/assets/8de4c8bf-4371-44d4-a93b-69d9092e6b45)
+
+The user's velocity is summarized in the following figure:
+
+![Velocity](https://github.com/user-attachments/assets/3c2f84d0-6ed1-42dd-ab0a-68e872ba83b2)
+
+### Discussion on the impact of multipath effects on the WLS solution
+
+The 
