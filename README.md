@@ -110,3 +110,22 @@ The correlator output should keep decreasing with the increasing value of code d
 From the plots of the correlator output of the Opensky and Urban datasets and the above discussions, one can observe that the correlator output has a sharp peak in the Opensky dataset while the Urban dataset has a distorted correlation peak. The reason of the distorted correlation peak in Urban dataset may be due to the multi-path in which some signals are reflected from the buildings, and the reflected signals travel for a longer distance than the line-of-sight signals before these signals are received by the user's antenna. Hence, these reflected signals arrive at the users after the line-of-sight signals have arrived at the user's antenna, which would probably result in the observation that the late correlation output in Urban dataset is larger than the Opensky dataset.
 
 ## Task 3: Decode the navigation message and extract key parameters, such as ephemeris data, for at least one satellite.
+
+After running the file init.m for each dataset, the navigation message is decoded by calling the function stored in the file postNavigation.m, NAVdecoding, and ephemeris.m. The key parameters such as ephemeris data can be retrieved via the variable eph, which contains the ephemeris data for satellites.
+
+### Task 3 Result on Opensky Dataset
+
+The ephemeris data of the satellites are summarized in the below table (Fields 16 corresponds to the satellite PRN16; Fields 22 corresponds to the satellite PRN22; Fields 26 corresponds to the satellite PRN26; Fields 16 corresponds to the satellite PRN27; Fields 31 corresponds to the satellite PRN31):
+
+![image](https://github.com/user-attachments/assets/5cec22ef-f3c6-4e2e-92a5-651233ddca46)
+
+### Task 3 Result on Urban Dataset
+
+The ephemeris data of the satellites are summarized in the below table (Fields 1 corresponds to the satellite PRN1; Fields 3 corresponds to the satellite PRN3; Fields 11 corresponds to the satellite PRN11; Fields 18 corresponds to the satellite PRN18):
+
+![image](https://github.com/user-attachments/assets/cfe55b6d-f088-4d63-8e19-0b59ebbd1ae6)
+
+## Task 4: Using pseudorange measurements from tracking, implement the Weighted Least Squares (WLS) algorithm to compute the user's position and velocity. Plot the user position and velocity. Compare the results with the ground truth. Discuss the impact of multipath effects on the WLS solution.
+
+
+
