@@ -13,3 +13,8 @@ settings.samplingFreq       = 58e6; % [Hz]```
 ```settings.fileName           = 'C:\Users\owner\Documents\MATLAB\GPS\Urban.bin';
 settings.IF                 = 10e6;     % [Hz]
 settings.samplingFreq       = 26e6; % [Hz]
+
+```javascript
+function greet(name) {
+    return `Hello, ${name}!`;
+}
